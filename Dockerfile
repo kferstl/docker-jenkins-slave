@@ -22,6 +22,18 @@ ADD authorized_keys /home/jenkins/.ssh/authorized_keys
 ADD known_hosts /home/jenkins/.ssh/known_hosts
 ADD ssh_config /home/jenkins/.ssh/config
 
+# Install rvm dependencies
+RUN apt-get install -y build-essential curl patch gawk g++ gcc make libc6-dev patch libreadline6-dev zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev
+
+# Install RVM
+USER jenkins
+RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+RUN /bin/bash -l -c "curl -L get.rvm.io | bash -s stable --ruby"
+RUN echo 'source $HOME/.rvm/scripts/rvm' >> $HOME/.bashrc
+RUN /bin/bash -l -c "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
+RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
+USER root
+
 # Standard SSH port
 EXPOSE 22
 
