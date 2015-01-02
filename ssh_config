@@ -1,0 +1,7 @@
+Host jumpbox.datad0g.com
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+
+Host jumpbox.datadoghq.com
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no

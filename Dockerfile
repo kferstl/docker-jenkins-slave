@@ -20,6 +20,7 @@ RUN apt-get install -y git
 RUN adduser --quiet jenkins
 ADD authorized_keys /home/jenkins/.ssh/authorized_keys
 ADD known_hosts /home/jenkins/.ssh/known_hosts
+ADD ssh_config /home/jenkins/.ssh/config
 
 # Standard SSH port
 EXPOSE 22
