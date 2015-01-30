@@ -3,6 +3,9 @@ FROM datadog/ubuntu:precise
 
 MAINTAINER Seth Rosenblum <seth@datadoghq.com>
 
+# Set the locale
+RUN locale-gen en_US.UTF-8
+
 # Make sure the package repository is up to date.
 RUN apt-get update
 
