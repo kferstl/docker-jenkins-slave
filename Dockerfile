@@ -1,5 +1,5 @@
 # This Dockerfile is used to build an image containing basic stuff to be used as a Jenkins slave build node.
-FROM datadog/ubuntu:precise
+FROM quay.io/datadog/ubuntu:precise
 
 MAINTAINER Seth Rosenblum <seth@datadoghq.com>
 
