@@ -5,3 +5,7 @@ Host jumpbox.datad0g.com
 Host jumpbox.datadoghq.com
     UserKnownHostsFile /dev/null
     StrictHostKeyChecking no
+
+Host github.com
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
