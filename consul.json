@@ -1,0 +1,7 @@
+{
+  "datacenter": "ott",
+  "data_dir": "/tmp/consul",
+  "log_level": "INFO",
+  "node_name": "jenkins-slave",
+  "server": true
+}

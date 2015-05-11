@@ -6,12 +6,27 @@ MAINTAINER Seth Rosenblum <seth@datadoghq.com>
 # Set the locale
 RUN locale-gen en_US.UTF-8
 
+RUN apt-get update
+RUN apt-get install -y apt-transport-https
+
+# Add chow repository
+ADD chow.list /etc/apt/sources.list.d/datadog-chow.list
+
 # Make sure the package repository is up to date.
 RUN apt-get update
+
+# Install supervisor
+RUN apt-get install -y supervisor
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Install a basic SSH server
 RUN apt-get install -y openssh-server
 RUN mkdir -p /var/run/sshd
+ADD sshd.supervisor.conf /etc/supervisor/conf.d/sshd.conf
+
+ADD consul.json /etc/consul.d/default.json
+RUN apt-get install -y consul
+ADD consul.supervisor.conf /etc/supervisor/conf.d/consul.conf
 
 # Install JDK 7 (latest edition)
 RUN apt-get install -y --no-install-recommends openjdk-7-jdk
@@ -39,4 +54,4 @@ USER root
 # Standard SSH port
 EXPOSE 22
 
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/usr/bin/supervisord"]
