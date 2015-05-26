@@ -1,4 +1,5 @@
 {
+  "bootstrap_expect": 1,
   "datacenter": "ott",
   "data_dir": "/tmp/consul",
   "log_level": "INFO",
